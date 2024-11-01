@@ -1,0 +1,11 @@
+!data/
+!data/**
+!images/
+#!*.dat
+!*.svg
+!*.png
+!*.webp
+/*.svg
+/*.png
+custom/*.png
+custom/*.svg

@@ -1,0 +1,6 @@
+[submodule "templates"]
+	path = templates
+	url = https://github.com/nholuongut/templates
+[submodule "bash-tools"]
+	path = bash-tools
+	url = https://github.com/nholuongut/devops-bash-tools

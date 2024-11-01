@@ -1,0 +1,18 @@
+#
+#  Author: Nho Luong
+#  Date: 2023-04-15 19:07:26 +0100 (Sat, 15 Apr 2023)
+#
+#  vim:ts=4:sts=4:sw=4:et
+#
+#  https://github.com/nholuongut/diagrams-as-code
+#
+#  License: see accompanying Nho Luong LICENSE file
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback to help steer this or other code I publish
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+curl
+d2
+graphviz

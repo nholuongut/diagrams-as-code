@@ -1,0 +1,185 @@
+#!/usr/bin/env d2
+#
+#  vim:ts=2:sts=2:sw=2:et:filetype=d2
+#
+#  Author: Nho Luong
+#  Date: 2023-05-13 19:51:29 +0100 (Sat, 13 May 2023)
+#
+#  https://github.com/nholuongut/diagrams-as-code
+#
+#  License: see accompanying Nho Luong LICENSE file
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback to help steer this or other code I publish
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+# ============================================================================ #
+# Azure AD as the SSO source of truth for AWS SSO, GitHub, Jenkins, Keycloak, Apps etc
+# ============================================================================ #
+
+direction: right
+
+# this is just a regular object
+title: {
+  label: Azure Active Directory Single Sign-On Integration
+  near: top-center
+  shape: text
+  style.font-size: 40
+  style.underline: true
+}
+
+classes: {
+  azuread: {
+    label: Azure\nActive Directory
+    # icon: https://icons.terrastruct.com/azure%2FIdentity%20Service%20Color%2FActive%20Directory.svg
+    icon: https://diagrams.mingrammer.com/img/resources/azure/identity/active-directory.png
+    shape: image
+  }
+  aws: {
+    label: AWS
+    # icon: https://icons.terrastruct.com/dev%2Famazonwebservices.svg
+    icon: https://icons.terrastruct.com/aws%2F_Group%20Icons%2FAWS-Cloud-alt_light-bg.svg
+    shape: image
+  }
+  aws_services: {
+    label: AWS Services
+    icon: https://icons.terrastruct.com/dev%2Famazonwebservices.svg
+    shape: image
+  }
+  ecr: {
+    label: AWS Elastic Container Registry
+    # square corners
+    # icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2-Container-Registry.svg
+    # round corners
+    icon: https://diagrams.mingrammer.com/img/resources/aws/compute/ec2-container-registry.png
+    shape: image
+  }
+  github: {
+    label: GitHub
+    icon: https://icons.terrastruct.com/dev%2Fgithub.svg
+    # icon: https://icons.terrastruct.com/social%2F039-github.svg
+    shape: image
+  }
+  git: {
+    label: Git Repo
+    icon: https://icons.terrastruct.com/dev%2Fgit.svg
+    shape: image
+  }
+  jenkins: {
+    label: Jenkins CI/CD
+    icon: https://diagrams.mingrammer.com/img/resources/onprem/ci/jenkins.png
+    shape: image
+  }
+  docker: {
+    label: Docker
+    # icon: https://diagrams.mingrammer.com/img/resources/onprem/container/docker.png
+    icon: https://icons.terrastruct.com/dev%2Fdocker.svg
+    shape: image
+  }
+  k8s: {
+    label: Kubernetes
+    icon: https://icons.terrastruct.com/azure%2F_Companies%2FKubernetes.svg
+    shape: image
+  }
+  argocd: {
+    label: ArgoCD
+    icon: https://diagrams.mingrammer.com/img/resources/onprem/gitops/argocd.png
+    shape: image
+  }
+  keycloak: {
+    label: Keycloak
+    icon: https://www.keycloak.org/resources/images/icon.svg
+    shape: image
+  }
+  users: {
+    label: Users
+    icon: https://icons.terrastruct.com/essentials%2F359-users.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/onprem/client/users.png
+    shape: image
+  }
+  apps: {
+    label: Apps
+    icon: https://icons.terrastruct.com/azure%2FIntune%20Service%20Color%2FClient%20Apps.svg
+    shape: image
+  }
+  oidc: {
+    label: SSO (OIDC)
+    style.stroke-dash: 5
+  }
+  saml: {
+    label: SSO (SAML)
+    style.stroke-dash: 5
+  }
+  animated: {
+    style.animated: true
+  }
+  dash: {
+    style.stroke-dash: 5
+  }
+  invisible: {
+    style.opacity: 0
+  }
+}
+
+users.class: users
+aad.class: azuread
+aws.class: aws
+aws.label: AWS IAM Identity Center\n(formerly AWS SSO)
+aws_services.class: aws_services
+github.class: github
+jenkins.class: jenkins
+# argo.class: argocd
+apps.class: apps
+
+users -> aad: login {class: animated}
+users <- aad: credentials {class: animated}
+
+aad -> aws: SSO redirect {class: invisible}
+aad <- aws: SSO redirect {class: saml}
+
+aad -> github: SSO redirect {class: invisible}
+aad <- github: SSO redirect {class: saml}
+
+aad -> jenkins: SSO redirect {class: invisible}
+aad <- jenkins: SSO redirect {class: oidc}
+
+# aad -> argo: SSO redirect {class: invisible}
+# aad <- argo: SSO redirect {class: oidc}
+
+apps -> aad: SSO redirect {class: invisible}
+apps <- aad: SSO redirect {class: invisible}
+
+apps -> keycloak: OIDC auth {class: dash}
+keycloak.class: keycloak
+# aad -> keycloak: SSO redirect {class: invisible}
+keycloak -> aad: {class: oidc}
+
+users -> aws: access # {class: animated}
+users -> github: access # {class: animated}
+users -> jenkins: access
+# {class: animated}
+# users -> keycloak: login {class: animated}
+users -> apps: acccess # {class: animated}
+
+aws -> aws_services: access # {class: animated}
+
+github -> git_repo1: access
+# {class: animated}
+# github -> git_repo2: access
+# {class: animated}
+# github -> git_repo3 {class: animated}
+
+git_repo1.class: git
+# git_repo2.class: git
+# git_repo3.class: git
+
+# jenkins -> docker: build {class: animated}
+# docker.class: docker
+# docker -> ecr: push\ndocker images {class: animated}
+# ecr -> k8s: pull\ndocker images {class:animated}
+# ecr.class: ecr
+# jenkins -> argo: call {class: animated}
+# argo.class: argocd
+# argo -> k8s: configure\ndeployments {class: animated}
+# k8s.class: k8s

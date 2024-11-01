@@ -1,0 +1,399 @@
+#!/usr/bin/env d2
+#
+#  vim:ts=2:sts=2:sw=2:et:filetype=d2
+#
+#  Author: Nho Luong
+#  Date: 2023-05-13 22:57:12 +0100 (Sat, 13 May 2023)
+#
+#  https://github.com/nholuongut/diagrams-as-code
+#
+#  License: see accompanying Nho Luong LICENSE file
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback to help steer this or other code I publish
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+# ============================================================================ #
+#                              W e b   B a s i c s
+# ============================================================================ #
+
+direction: down
+
+# this is just a regular object
+title: {
+  label: Web Basics
+  near: top-center
+  shape: text
+  style.font-size: 40
+  style.underline: true
+}
+
+classes: {
+  dns: {
+    label: DNS
+    # icon: https://icons.terrastruct.com/azure%2FNetworking%20Service%20Color%2FDNS%20Zones.svg
+    icon: https://diagrams.mingrammer.com/img/resources/azure/network/dns-zones.png
+    shape: image
+  }
+  nginx: {
+    label: Nginx\nweb server
+    # icon: https://icons.terrastruct.com/dev%2Fnginx.svg
+    icon: https://diagrams.mingrammer.com/img/resources/onprem/network/nginx.png
+    shape: image
+  }
+  aws: {
+    label: AWS
+    icon: https://icons.terrastruct.com/dev%2Famazonwebservices.svg
+    # icon: https://icons.terrastruct.com/aws%2F_Group%20Icons%2FAWS-Cloud-alt_light-bg.svg
+    shape: image
+  }
+  gcp: {
+    label: GCP
+    icon: https://cdn-icons-png.flaticon.com/512/873/873117.png
+    # icon: https://lirp.cdn-website.com/aa0ef369/dms3rep/multi/opt/google-cloud-icon-400w.png
+    shape: image
+  }
+  azure: {
+    label: Azure
+    icon: https://cdn-icons-png.flaticon.com/512/873/873107.png
+    icon: https://www.smartdesc.co.uk/wp-content/uploads/2022/10/Azure-Square-3.png
+    shape: image
+  }
+  commandline: {
+    label: Command Line
+    icon: https://icons.terrastruct.com/aws%2FDeveloper%20Tools%2FAWS-Command-Line-Interface.svg
+    shape: image
+  }
+  apache: {
+    label: Apache\nweb server
+    icon: https://www.svgrepo.com/show/353400/apache.svg
+    # icon: https://icons.terrastruct.com/dev%2Fapache.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/onprem/network/apache.png
+    shape: image
+  }
+  linux: {
+    label: Linux
+    icon: https://icons.terrastruct.com/dev%2Flinux.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/generic/os/linux-general.png
+    shape: image
+  }
+  mac: {
+    label: macOS / iOS
+    icon: https://icons.terrastruct.com/dev%2Fapple.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/generic/os/ios.png
+    shape: image
+  }
+  android: {
+    label: Android
+    icon: https://icons.terrastruct.com/dev%2Fandroid.svg
+    shape: image
+  }
+  debian: {
+    label: Debian
+    icon: https://diagrams.mingrammer.com/img/resources/generic/os/debian.png
+    shape: image
+  }
+  redhat: {
+    label: Redhat
+    icon: https://icons.terrastruct.com/dev%2Fredhat.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/generic/os/red-hat.png
+    shape: image
+  }
+  suse: {
+    label: Suse
+    icon: https://diagrams.mingrammer.com/img/resources/generic/os/suse.png
+    shape: image
+  }
+  ubuntu: {
+    label: Ubuntu
+    icon: https://diagrams.mingrammer.com/img/resources/generic/os/ubuntu.png
+    shape: image
+  }
+  windows: {
+    label: Windows
+    icon: https://icons.terrastruct.com/dev%2Fwindows.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/generic/os/windows.png
+    shape: image
+  }
+  browser: {
+    label: Web Browser
+    icon: https://icons.terrastruct.com/tech%2Fbrowser-2.svg
+    shape: image
+  }
+  chrome: {
+    label: Chrome
+    icon: https://icons.terrastruct.com/dev%2Fchrome.svg
+    shape: image
+  }
+  firefox: {
+    label: Firefox
+    icon: https://icons.terrastruct.com/dev%2Ffirefox.svg
+    shape: image
+  }
+  safari: {
+    label: Safari
+    icon: https://icons.terrastruct.com/dev%2Fsafari.svg
+    shape: image
+  }
+  laptop: {
+    label: Laptop
+    icon: https://icons.terrastruct.com/tech%2Flaptop.svg
+    shape: image
+  }
+  desktop: {
+    label: Desktop
+    icon: https://icons.terrastruct.com/tech%2Fdesktop.svg
+    shape: image
+  }
+  tablet: {
+    label: Tablet
+    icon: https://icons.terrastruct.com/tech%2F079-tablet-1.svg
+    shape: image
+  }
+  phone: {
+    label: Smart Phone
+    icon: https://icons.terrastruct.com/tech%2F052-smartphone-3.svg
+    shape: image
+  }
+  server: {
+    label: Server
+    icon: https://icons.terrastruct.com/tech%2F022-server.svg
+    # icon: https://icons.terrastruct.com/essentials%2F112-server.svg
+    shape: image
+  }
+  firewall: {
+    label: Firewall
+    icon: https://icons.terrastruct.com/infra%2F003-firewall.svg
+    # icon: https://diagrams.mingrammer.com/img/resources/generic/network/firewall.png
+    shape: image
+  }
+  router: {
+    label: Router
+    icon: https://diagrams.mingrammer.com/img/resources/generic/network/router.png
+    shape: image
+  }
+  network: {
+    label: Local Network
+    icon: https://diagrams.mingrammer.com/img/resources/generic/network/subnet.png
+    shape: image
+  }
+  datacenter: {
+    label: Datacenter
+    icon: https://diagrams.mingrammer.com/img/resources/generic/place/datacenter.png
+    shape: image
+  }
+  internet: {
+    label: Internet
+    icon: https://icons.terrastruct.com/infra%2F022-hosting.svg
+    shape: image
+  }
+  invisible: {
+    style.opacity: 0
+  }
+  traffic: {
+    label: traffic
+    style.animated: true
+    style.stroke-dash: 5
+  }
+  http_request: {
+    label: HTTP GET /
+    style.animated: true
+    style.stroke-dash: 5
+  }
+  http_response: {
+    label: <html>...
+    style.animated: true
+    style.stroke-dash: 5
+  }
+  dns_request: {
+    label: DNS query\nwhere is www.domain.com\n(record type "A" query)
+    style.animated: true
+    style.stroke-dash: 5
+  }
+  dns_response: {
+    label: DNS reply\nwww.domain.com is at IP address 1.2.3.4
+    style.animated: true
+    style.stroke-dash: 5
+  }
+}
+
+platform: Cloud Platform or Datacenter {
+  aws.class: aws
+  gcp.class: gcp
+  azure.class: azure
+  # datacenter.class: datacenter
+  # datacenter -> server
+  server.class: server
+
+  aws -> webserver
+  gcp -> webserver
+  azure -> webserver
+  server -> webserver
+
+  webserver: Web Servers {
+    apache.class: apache
+    nginx.class: nginx
+
+    apache -> website
+    nginx -> website
+    website: {
+      label: www.domain.com\n1.2.3.4
+      class: internet
+    }
+  }
+
+  dns.class: dns
+}
+
+# platform -> internet: { class: traffic }
+# platform <- internet: { class: traffic }
+#
+# internet.class: internet
+# internet <- network.router: { class: traffic }
+# internet -> network.router: { class: traffic }
+# #internet <- network.router: { class: dns_request }
+# #internet -> network.router: { class: dns_response }
+# #internet <- network.router: { class: http_request }
+# #internet -> network.router: { class: http_response }
+#
+# network: Local Network {
+#  router.class: router
+#  lan.class: network
+#  lan.label: Local Area Network (LAN)
+#  lan -> router: {
+#    label: forward to 1.2.3.4
+#    class: traffic
+#  }
+#  lan <- router: {
+#    label: return traffic from 1.2.3.4
+#    class: traffic
+#  }
+# }
+
+computer: Computer {
+  # software -> _.platform.dns: {class: dns_request}
+  # software <- _.platform.dns: {class: dns_response}
+  software.os -> _.platform.dns: {class: dns_request}
+  software.os <- _.platform.dns: {class: dns_response}
+  # os -> _.network.lan: { class: traffic }
+  # os <- _.network.lan: { class: traffic }
+
+  software: Software {
+    browsers: Web Browsers {
+      browser.class: browser
+      chrome.class: chrome
+      firefox.class: firefox
+      safari.class: safari
+    }
+    browsers -> _._.platform.webserver.website: {class: http_request}
+    browsers <- _._.platform.webserver.website: {class: http_response}
+    # browsers -> _._.network.lan: { class: http_request }
+    # browsers <- _._.network.lan: { class: http_response }
+
+    cli: Command Line {
+      cli.class: commandline
+
+      # host -> _._._.platform.dns: { class: dns_request }
+      # host <- _._._.platform.dns: { class: dns_response }
+      curl: |sh
+        curl wwww.domain.com
+
+        <html>...
+      |
+      curl -> _._._.platform.webserver.website: {class: http_request}
+      curl <- _._._.platform.webserver.website: {class: http_response}
+      # curl -> _._._.network.lan: { class: http_request }
+      # curl <- _._._.network.lan: { class: http_response }
+
+      # curl -> host: {class: invisible}
+      # host -> cli: {class: invisible}
+
+      host: |sh
+        host www.domain.com
+
+        www.domain.com has address 1.2.3.4
+      |
+
+      # host -> nslookup: {class: invisible}
+      # nslookup: |sh
+      #  nslookup www.domain.com
+      #
+      #  Server:         10.255.252.1
+      #  Address:        10.255.252.1#53
+      #
+      #  Non-authoritative answer:
+      #  Name:   www.domain.com
+      #  Address: 172.217.169.4
+      # |
+      # dig: |sh
+      #  dig www.domain.com
+      #
+      #  ; <<>> DiG 9.10.6 <<>> www.domain.com
+      #  ;; global options: +cmd
+      #  ;; Got answer:
+      #  ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59483
+      #  ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+      #
+      #  ;; OPT PSEUDOSECTION:
+      #  ; EDNS: version: 0, flags: do; udp: 512
+      #  ;; QUESTION SECTION:
+      #  ;www.domain.com.                        IN      A
+      #
+      #  ;; ANSWER SECTION:
+      #  www.domain.com.         211     IN      A       172.217.169.4
+      #
+      #  ;; Query time: 7 msec
+      #  ;; SERVER: 10.255.252.1#53(10.255.252.1)
+      #  ;; WHEN: Sun May 14 16:50:39 BST 2023
+      #  ;; MSG SIZE  rcvd: 73
+      # |
+    }
+
+    # cli -> os #: {class: invisible}
+    # browsers -> os #: {class: invisible}
+
+    # cli -> blank #: {class: invisible}
+    # browsers -> blank #: {class: invisible}
+    # blank -> os
+
+    os: Operating Systems {
+      windows.class: windows
+      mac.class: mac
+      android.class: android
+      linux: Linux {
+        linux.class: linux
+        # linux -- distros
+        distros: Distros {
+          ubuntu.class: ubuntu
+          debian.class: debian
+          redhat.class: redhat
+          suse.class: suse
+          # ubuntu -- debian -- redhat -- suse: {class: invisible}
+        }
+      }
+      # windows -- mac -- linux
+
+      # windows -> blank: {class: invisible}
+      # mac -> blank: {class: invisible}
+      # linux -> blank: {class: invisible}
+      # blank.class: invisible
+    }
+  }
+
+  software.os -> phone: {class: invisible}
+  software.os -> tablet: {class: invisible}
+  software.os -> laptop: {class: invisible}
+  software.os -> desktop: {class: invisible}
+
+  phone.class: phone
+  tablet.class: tablet
+  laptop.class: laptop
+  desktop.class: desktop
+  # laptop -> blank: {class: invisible}
+  # desktop -> blank: {class: invisible}
+  #
+  # blank: {class: invisible}
+  # desktop -> blank: {class: invisible}
+  # laptop -> blank: {class: invisible}
+}

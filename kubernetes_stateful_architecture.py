@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+#  coding=utf-8
+#  vim:ts=4:sts=4:sw=4:et
+#
+#  Author: Nho Luong
+#  Date: 2023-04-14 13:54:52 +0100 (Fri, 14 Apr 2023)
+#
+#  https://github.com/nholuongut/diagrams-as-code
+#
+#  License: see accompanying Nho Luong LICENSE file
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn
+#  and optionally send me feedback to help steer this or other code I publish
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+"""
+
+Kubernetes Stateful Architecture
+
+"""
+
+# based on https://diagrams.mingrammer.com/docs/getting-started/examples
+
+__author__ = 'Hari Sekhon'
+__version__ = '0.1'
+
+import os
+from diagrams import Diagram, Cluster
+
+# ============================================================================ #
+# Kubernetes resources:
+#
+# K8s resources:
+#
+#   https://diagrams.mingrammer.com/docs/nodes/k8s
+#
+from diagrams.k8s.compute import Pod, StatefulSet
+# from diagrams.k8s.network import Service
+from diagrams.k8s.storage import PV, PVC, StorageClass
+
+with Diagram("Kubernetes Stateful Architecture",
+             show=not bool(os.environ.get('CI', 0)),
+             filename='images/kubernetes_stateful_architecture',
+             ):
+    with Cluster("App"):
+        # Service clutters this diagram
+        # svc = Service("Service)")
+        sts = StatefulSet("StatefulSet")
+
+        apps = []
+        # pylint: disable=W0104
+        # count from 3 to 1 to get the apps to come out in the right order top to bottom
+        for _ in range(3, 0, -1):
+            pod = Pod(f"Pod {_}")
+            pvc = PVC(f"Persistent\nVolume Claim {_}")
+            pv = PV(f"Persistent Volume {_}")
+            #pod - sts - pvc
+            #apps.append(svc >> pod >> pvc >> pv)
+            apps.append(sts >> pod >> pvc >> pv)
+
+        # pylint: disable=W0106
+        apps << StorageClass("Storage Class")
